@@ -30,8 +30,8 @@ export default function Navbar() {
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link to="/" className="font-display text-2xl font-bold tracking-wider text-primary-foreground">
-            BOSS<span className="text-primary">BURGER</span>
+          <Link to="/" className="font-display text-2xl font-bold tracking-wider">
+            <span className="text-white">BOSS</span><span className="text-primary"> BURGER</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
