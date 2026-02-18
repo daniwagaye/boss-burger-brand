@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useParallax } from "@/hooks/useScrollAnimation";
 import heroBurger from "@/assets/hero-burger.jpg";
 
-const PHONE = "tel:+15551234567";
+const PHONE = "tel:+09101002002";
+const PHONE_DISPLAY = "0910100202";
 
 export default function HeroSection() {
   const scrollY = useParallax();
@@ -21,77 +23,105 @@ export default function HeroSection() {
           className="w-full h-[120%] object-cover object-center"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90" />
-      </div>
-
-      {/* Floating smoke overlay */}
-      <div
-        className="absolute inset-0 z-10 opacity-20 pointer-events-none"
-        style={{ transform: `translateY(${scrollY * -0.1}px)` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-primary/5 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/85" />
       </div>
 
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-4">
-        <motion.p
+        {/* Pill badge */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-gold font-sans text-sm md:text-base font-semibold tracking-[0.3em] uppercase mb-4"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mb-6 inline-flex items-center gap-2 border border-white/30 rounded-full px-5 py-2 backdrop-blur-sm bg-black/20"
         >
-          Premium Handcrafted Burgers
-        </motion.p>
+          <span className="w-2 h-2 rounded-full bg-gold inline-block" />
+          <span className="text-white font-sans text-xs md:text-sm font-semibold tracking-[0.25em] uppercase">Premium Burgers</span>
+        </motion.div>
 
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight max-w-4xl"
+          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight max-w-4xl"
         >
-          Bigger Taste.
+          <span className="text-white">Bigger Taste.</span>
           <br />
-          <span className="text-gradient-gold">Better Burgers.</span>
+          <span className="text-primary">Better Burgers.</span>
         </motion.h1>
 
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="mt-6 text-white/70 font-sans text-lg md:text-xl max-w-lg"
+          className="mt-5 text-white/75 font-sans text-base md:text-lg max-w-md"
         >
-          Crafted with passion, served with pride. Experience burgers like never before.
+          Hand-pressed patties · local buns · real flavor.
         </motion.p>
 
-        <motion.a
-          href={PHONE}
-          initial={{ opacity: 0, scale: 0.8 }}
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 1.3, type: "spring" }}
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-10 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-full font-sans font-bold text-lg glow-crimson shadow-2xl"
+          transition={{ duration: 0.6, delay: 1.2, type: "spring" }}
+          className="mt-8 flex flex-col items-center gap-3"
         >
-          <Phone size={20} />
-          Call Now
-        </motion.a>
+          <motion.a
+            href={PHONE}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-full font-sans font-bold text-base md:text-lg glow-crimson shadow-2xl"
+          >
+            <Phone size={18} />
+            Call Now — {PHONE_DISPLAY}
+          </motion.a>
+
+          <Link
+            to="/menu"
+            className="text-white/80 hover:text-white font-sans text-sm font-medium underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors"
+          >
+            View Full Menu →
+          </Link>
+        </motion.div>
+
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+          className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-10 md:gap-16"
+        >
+          {[
+            { value: "10+", label: "YEARS" },
+            { value: "50K+", label: "BURGERS" },
+            { value: "4.9★", label: "RATING" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="font-display text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+              <p className="font-sans text-xs tracking-widest text-white/50 mt-0.5">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          transition={{ delay: 2.2 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
         >
+          <span className="font-sans text-[10px] tracking-[0.3em] text-white/40 uppercase">Scroll</span>
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center pt-2"
+            animate={{ y: [0, 5, 0] }}
+            transition={{ repeat: Infinity, duration: 1.8 }}
           >
-            <div className="w-1.5 h-1.5 rounded-full bg-white/60" />
+            <ChevronDown size={16} className="text-white/40" />
           </motion.div>
         </motion.div>
       </div>
     </section>
   );
 }
+
