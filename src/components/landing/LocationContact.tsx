@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, Instagram } from "lucide-react";
 
-const PHONE = "tel:+15551234567";
+const PHONE = "tel:+09101002002";
+const PHONE_DISPLAY = "0910100202";
+
+function FacebookIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
 
 export default function LocationContact() {
   const { ref, isVisible } = useScrollAnimation();
@@ -20,7 +29,8 @@ export default function LocationContact() {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Visit Boss Burger</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          {/* Map placeholder */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
@@ -36,53 +46,77 @@ export default function LocationContact() {
             </div>
           </motion.div>
 
+          {/* Contact card */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
+            className="bg-card rounded-3xl p-7 md:p-8 shadow-xl border border-border space-y-6"
           >
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <MapPin className="text-primary" size={22} />
+            {/* Address */}
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <MapPin className="text-primary" size={24} />
               </div>
               <div>
                 <h3 className="font-display text-xl font-bold text-foreground">Address</h3>
-                <p className="text-muted-foreground font-sans">123 Burger Lane, Flavor Town, CA 90210</p>
+                <p className="text-muted-foreground font-sans text-sm mt-0.5">123 Burger Lane, Downtown, Your City</p>
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Clock className="text-primary" size={22} />
+            {/* Hours */}
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                <Clock className="text-gold" size={24} />
               </div>
               <div>
                 <h3 className="font-display text-xl font-bold text-foreground">Hours</h3>
-                <p className="text-muted-foreground font-sans">Mon–Fri: 11am – 10pm</p>
-                <p className="text-muted-foreground font-sans">Sat–Sun: 10am – 11pm</p>
+                <p className="text-muted-foreground font-sans text-sm mt-0.5">Mon – Sat: 11am – 10pm</p>
+                <p className="text-muted-foreground font-sans text-sm">Sunday: 12pm – 9pm</p>
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Phone className="text-primary" size={22} />
+            {/* Phone */}
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Phone className="text-primary" size={24} />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold text-foreground">Call Us</h3>
-                <p className="text-muted-foreground font-sans">+1 (555) 123-4567</p>
+                <h3 className="font-display text-xl font-bold text-foreground">Phone</h3>
+                <p className="text-muted-foreground font-sans text-sm mt-0.5">{PHONE_DISPLAY}</p>
               </div>
             </div>
 
+            {/* Call Now button */}
             <a
               href={PHONE}
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-sans font-bold text-lg glow-crimson hover:scale-105 transition-transform shadow-xl"
+              className="flex items-center justify-center gap-3 w-full bg-primary text-primary-foreground py-4 rounded-full font-sans font-bold text-base glow-crimson hover:scale-[1.02] transition-transform shadow-lg"
             >
-              <Phone size={20} />
-              Call Now to Order
+              <Phone size={18} />
+              Call Now — {PHONE_DISPLAY}
             </a>
+
+            {/* Social buttons */}
+            <div className="grid grid-cols-2 gap-3">
+              <a
+                href="#"
+                className="flex items-center justify-center gap-2 border border-border rounded-full py-3 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors font-sans text-sm font-medium"
+              >
+                <Instagram size={16} />
+                Instagram
+              </a>
+              <a
+                href="#"
+                className="flex items-center justify-center gap-2 border border-border rounded-full py-3 text-foreground/70 hover:text-foreground hover:border-foreground/40 transition-colors font-sans text-sm font-medium"
+              >
+                <FacebookIcon size={16} />
+                Facebook
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>
     </section>
   );
 }
+
