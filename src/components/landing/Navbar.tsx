@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Menu, X, Moon, Sun } from "lucide-react";
+
 import { useDarkMode } from "@/hooks/useDarkMode";
 
 const PHONE = "tel:+15551234567";
@@ -76,14 +77,6 @@ export default function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Mobile floating Call button */}
-      <a
-        href={PHONE}
-        className="md:hidden fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-full font-sans font-bold text-sm shadow-2xl glow-crimson hover:scale-105 transition-transform"
-      >
-        <Phone size={18} />
-        Call Now
-      </a>
     </>
   );
 }
