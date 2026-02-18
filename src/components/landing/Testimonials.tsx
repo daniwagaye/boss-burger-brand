@@ -49,12 +49,13 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-12"
+          className="mb-12 text-center"
         >
           <p className="text-gold font-sans text-xs tracking-[0.3em] uppercase mb-3">Reviews</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-background">
             What People <span className="text-gold italic">Say</span>
           </h2>
+
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">

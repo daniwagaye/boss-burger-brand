@@ -91,7 +91,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-10 md:gap-16"
+          className="absolute bottom-16 left-0 right-0 flex justify-center items-center gap-10 md:gap-16"
         >
           {[
             { value: "10+", label: "YEARS" },
@@ -110,7 +110,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.2 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+          className="absolute bottom-4 left-0 right-0 flex flex-col items-center gap-1"
         >
           <span className="font-sans text-[10px] tracking-[0.3em] text-white/40 uppercase">Scroll</span>
           <motion.div
