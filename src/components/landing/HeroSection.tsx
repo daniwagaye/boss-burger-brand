@@ -27,7 +27,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-4">
+      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-4 pb-24">
         {/* Pill badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ export default function HeroSection() {
           Hand-pressed patties · local buns · real flavor.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -85,42 +85,42 @@ export default function HeroSection() {
             View Full Menu →
           </Link>
         </motion.div>
-
-        {/* Stats bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          className="absolute bottom-16 left-0 right-0 flex justify-center items-center gap-10 md:gap-16"
-        >
-          {[
-            { value: "10+", label: "YEARS" },
-            { value: "50K+", label: "BURGERS" },
-            { value: "4.9★", label: "RATING" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-display text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
-              <p className="font-sans text-xs tracking-widest text-white/50 mt-0.5">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.2 }}
-          className="absolute bottom-4 left-0 right-0 flex flex-col items-center gap-1"
-        >
-          <span className="font-sans text-[10px] tracking-[0.3em] text-white/40 uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8 }}
-          >
-            <ChevronDown size={16} className="text-white/40" />
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Stats bar — pinned to bottom, above scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.6 }}
+        className="absolute bottom-10 left-0 right-0 flex justify-center items-center gap-10 md:gap-16 z-20"
+      >
+        {[
+          { value: "10+", label: "YEARS" },
+          { value: "50K+", label: "BURGERS" },
+          { value: "4.9★", label: "RATING" },
+        ].map((stat) => (
+          <div key={stat.label} className="text-center">
+            <p className="font-display text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+            <p className="font-sans text-xs tracking-widest text-white/50 mt-0.5">{stat.label}</p>
+          </div>
+        ))}
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.2 }}
+        className="absolute bottom-2 left-0 right-0 flex flex-col items-center gap-0.5 z-20"
+      >
+        <span className="font-sans text-[10px] tracking-[0.3em] text-white/40 uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8 }}
+        >
+          <ChevronDown size={16} className="text-white/40" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
