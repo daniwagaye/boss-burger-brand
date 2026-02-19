@@ -30,7 +30,7 @@ export default function Testimonials() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-20 bg-foreground">
+    <section ref={ref} className="py-20 bg-[#111111]">
       <div className="container mx-auto px-4 max-w-2xl lg:max-w-3xl">
         {/* Header */}
         <motion.div
@@ -40,7 +40,7 @@ export default function Testimonials() {
           className="mb-10 text-center"
         >
           <p className="text-primary font-sans text-xs tracking-[0.3em] uppercase font-bold mb-3">Reviews</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-background">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white">
             What People <span className="text-primary italic">Say</span>
           </h2>
         </motion.div>
@@ -70,12 +70,12 @@ export default function Testimonials() {
               </div>
 
               {/* Review text */}
-              <p className="text-background/80 font-sans text-sm leading-relaxed italic flex-1 mb-5">
+              <p className="text-white/70 font-sans text-sm leading-relaxed italic flex-1 mb-5">
                 "{t.text}"
               </p>
 
               {/* Divider */}
-              <div className="border-t border-background/10 mb-4" />
+              <div className="border-t border-white/10 mb-4" />
 
               {/* Author */}
               <div className="flex items-center gap-3">
@@ -83,8 +83,8 @@ export default function Testimonials() {
                   <span className="text-white font-bold text-sm font-sans">{t.initial}</span>
                 </div>
                 <div>
-                  <p className="text-background font-sans font-bold text-sm">{t.name}</p>
-                  <p className="text-background/50 font-sans text-xs">{t.role}</p>
+                  <p className="text-white font-sans font-bold text-sm">{t.name}</p>
+                  <p className="text-white/50 font-sans text-xs">{t.role}</p>
                 </div>
               </div>
             </motion.div>
@@ -103,8 +103,8 @@ export default function Testimonials() {
               <Star key={j} size={22} className="fill-gold text-gold" />
             ))}
           </div>
-          <p className="font-display text-3xl font-bold text-background mb-1">4.9 / 5</p>
-          <p className="text-background/50 font-sans text-sm">Based on 1,200+ reviews</p>
+          <p className="font-display text-3xl font-bold text-white mb-1">4.9 / 5</p>
+          <p className="text-white/50 font-sans text-sm">Based on 1,200+ reviews</p>
         </motion.div>
       </div>
     </section>

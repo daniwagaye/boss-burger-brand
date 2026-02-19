@@ -27,6 +27,7 @@ export default function LocationContact() {
         >
           <p className="text-gold font-sans text-sm tracking-[0.3em] uppercase mb-3">Find Us</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">Visit Boss Burger</h2>
+          <p className="font-display text-2xl md:text-3xl font-bold italic text-foreground/60 mt-2 tracking-wide">BOLE + SUMMIT</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
